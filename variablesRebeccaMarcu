@@ -1,0 +1,25 @@
+"use strict";// commentaire
+
+var prenom="RBK"
+console.log(prenom);
+let nom="Marcu";
+console.log(nom);
+console.log(typeof nom); // string = chaine de caractères 
+let age= 22;
+console.log(typeof age); // number
+let nDecimal=19.5;
+console.log(typeof nDecimal); // number
+
+let ouvert =true; // boolean 
+
+console.log(prenom +" "+ nom+ " a " + age); // concatener les éléments entre eux 
+console.log(`bonjour ${prenom} ${nom} vous avez ${age}`); // nouvelle version de la  concatener 
+console.log(age + nDecimal); 
+
+let classe="G5"
+console.log(typeof classe);
+let annee="A1";
+console.log(typeof annee); 
+let emotion="content :)"
+console.log(typeof emotion);
+console.log(`je  suis en ${classe} en ${annee} et je suis ${emotion}`)
