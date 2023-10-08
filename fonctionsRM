@@ -1,0 +1,13 @@
+"use strict"
+
+function saluer(){
+console.log('salut ça va?');
+}
+saluer();
+
+let pseudo="beccachou";
+function saluermoi(prenom){
+    console.log("bonjour" + prenom);
+}
+saluermoi("moi");
+saluermoi(pseudo);
