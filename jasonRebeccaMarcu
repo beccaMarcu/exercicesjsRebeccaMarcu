@@ -1,0 +1,86 @@
+"use strict"
+
+const names = ["Sarah", "Bertrand", "Cindy", "Jack", "Brandon"]; // liste de noms constante car ne va pas changer
+const cliches = [
+    {
+        name: "blonde",
+        probaMourir: 0.3, 
+        probaEsquive: 0.5 // on peut se passer de dégats + mourir car si ce n'est pas compris entre 0 et 0.8 c'est forcément au dessus
+    },
+    {
+        name: "rousse",
+        probaMourir: 0.3,
+        probaEsquive: 0.5
+    },
+    {
+        name: "sportif",
+        probaMourir: 0.3,
+        probaEsquive: 0.5  
+    },
+    {
+        name: "nerd",
+        probaMourir: 0.3,
+        probaEsquive: 0.5  
+    },
+    {
+        name: "innocente",
+        probaMourir: 0.3,
+        probaEsquive: 0.5  
+    }
+
+];
+
+// on déclare notre variable de survivants entre 0 et 5, on ajoute un survivant à chaque tour
+let survivants = []; 
+for (let i=0; i<5; ++i)
+{
+    const survivant = { // à chaque tout on veut un perso random + random caract
+        name: names[Math.floor(Math.random() * names.length)], // on cherche un random nombre
+        // dans la longueur de l'array eet on veut que ce nombre soit un entier
+        cliche: cliches[Math.floor(Math.random() * cliches.length)] // même étape pour les clichés
+    };
+    survivants.push(survivant); // on veut choisir un survivant
+}
+
+let morts = []; // on veut que les mots soient mis de côté pour ne pas les tirer à nouveau 
+let pdvJason = 100; // on donne à Jason la valeur de 100 car ce sont ces points de vie 
+while (pdvJason > 0 && survivants.length > 0) // tant qu'il n'est pas à 0 et qu'il reste des survivants on continue
+{
+    let cibleIndex = Math.floor(Math.random() * survivants.length);
+    // on veut choisir une cible et on veut que cette cible soit choisie parmis la liste de survivants
+    let cible = survivants[cibleIndex]; 
+
+    let x = Math.random(); // on choisie aléatoirement
+    if (x < cible.cliche.probaMourir) // math.random ne prend qu'un chiffre entre 0 et 1 exclu 
+    // donc probamourir doit être entre 0 et 0.3
+    {
+        morts.push(cible); // on choisit notre cible
+        delete survivants[cibleIndex]; // si mort on le retire des survivants
+        console.log("Jason a tué " + cible.name); 
+    }
+    else if (x < probaMourir + probaEsquive) // si notre random est entre 0.3 et 0.8
+    {
+        pdvJason -= 10; // jason perd de la vie
+        console.log(cible.name + " a esquivé et a infligé 10pts de dégats");
+    }
+    else
+    {
+        pdvJason -= 15; // nous n'avont pas défini le dernier cas car inutile car il est juste un else
+        morts.push(cible); // le survivant meurt
+        delete survivants[cibleIndex]; // je le retire de l'index des cibles
+        console.log("Jason a tué " + cible.name + " qui lui a infligé 15pts de dégats");
+    }
+}
+
+// nous sortons de la boucle
+
+if (pdvJason === 0 ) 
+{
+    console.log("Jason est mort"); // cas de réussite des survivants 
+    console.log("Les survivants ont gagné mais rip à " + morts);
+}
+else
+{
+    console.log("Les morts sont: " + morts); // cas de réussite de jason
+}
+// le jeu s'arrête
