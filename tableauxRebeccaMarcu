@@ -1,0 +1,14 @@
+"use strict"
+
+let tableaunom=[];
+tableaunom.push("Vincent");
+tableaunom.push("Paul");
+tableaunom.push("Arthur");
+
+for (let i=0; i<tableaunom.length; i++) {
+    tableaunom[i] = tableaunom[i]+" va à la pêche";
+}
+console.log(tableaunom);
+
+// mettre un tableau avec chaque élément, les push, partir de 0, index est inférieur à la longueur du tableau et on avance de 1 en 1 
+// j'ajoute à mon index du texte, puis j'affiche ce texte 
