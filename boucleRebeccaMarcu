@@ -1,0 +1,13 @@
+"use strict"
+
+let a=5
+
+for (let i=0;i<a;i++){
+
+        console.log("oklm");
+    
+}
+
+// pour faire une boucle d'un certains nombre d'éléments, je pars de 0; mon i doit être inferieur à a sinon il va m'arricher un de plus
+// et je passe de 1 en 1 
+// puis la console doit afficher mon texte 5x 
