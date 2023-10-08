@@ -1,0 +1,44 @@
+"use strict" 
+
+let tableauchansons=[]; // je crée un array avec 5 chansons dont wedjene ainsi que 4 chansons qui ne font pas perdre de points de vie
+tableauchansons.push("anissa Wejdene","elodie ben mazué","l'adresse roméo elvis","paradis orelsan","coté ouest 47 ter");
+
+let perso={
+    name: "Becca",
+    santementale: 10
+}; // je crée mon perso je l'appelle comme moi et je lui donne 10 points de vie
+
+let nbChangements = 0; // je commence mon compteur de changements
+
+for (let feuActuel = 1; feuActuel <= 30; feuActuel++) // on commence notre compte à 1 on l'arrête à 30 et il augmente de 1 à chaque tour
+{
+    let index = Math.floor(Math.random() * tableauchansons.length);
+    // on crée une variable qui nous donne un nb aléatoire entier multiplié par la longueur de ma liste 
+    let chanson = tableauchansons[index]; // je crée une variable chanson qui correspond à la place dans ma liste de chansons
+    let feuxRestants = 30 - feuActuel; // mon nombre de tours restant est égal à 30 - mon nombre de tours actuels
+    console.log("Chanson: " + chanson + " Feux restants: " + feuxRestants);
+
+    if (index === 0) // 0 étant le premier élément de mon tableau c'est donc Anissa
+    {
+        console.log(perso.name + " en a marre de cette chanson! Elle change de taxi! ");
+        perso.santementale -= 1; // je perds donc un point de vie
+        if (perso.santementale === 0) // si j'arrive à 0 
+        {
+            break; // le jeu s'arrête
+        }
+        nbChangements += 1; // sinon je fais un changement de taxi
+    }
+    else // dans tous les autres cas
+    {
+        console.log("Ouf! Enfin de la bonne musique! " + perso.name + " continue son tajet :) ");
+    }
+} 
+
+if (perso.santementale !== 0) // les deux cas de fin de jeux sont
+{
+    console.log("je suis bien arrivée trop cool rompiche en plus youpi il m'a fallu " + nbChangements + " changements! :D") 
+} // je gagne donc j'affiche le nombre de changements que ça m'a pris
+else
+{
+    console.log("BECCA EXPLOSION"); // sinon j'explose 
+}
